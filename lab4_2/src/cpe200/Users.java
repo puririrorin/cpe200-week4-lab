@@ -1,49 +1,69 @@
 package cpe200;
-
 import java.util.ArrayList;
 
-/**
- * Created by pruet on 12/9/2559.
- */
 public class Users {
     public ArrayList<User> userList;
-
-    public void addUser(User user)
-    {
+    public Users() {
+        userList = new ArrayList<>();
     }
 
-    public void addUser(String userName, String password)
-    {
-    }
+        public void addUser (User user){
+            userList.add(user);
+        }
 
-    public void deleteUser(User user)
-    {
 
-    }
+        public void addUser (String userName, String password){
+            User user = new User();
 
-    public boolean exists(User user)
-    {
-        return false;
-    }
+            user.setUserName(userName);
+            user.setPassword(password);
 
-    public boolean usernameExists(String username)
-    {
-        return false;
-    }
+            userList.add(user);
 
-    /* This method should return null when the user with username is not in the list */
-    public User getUserByUsername(String userName)
-    {
-        return null;
-    }
+        }
 
-    public int count()
-    {
-        return 0;
-    }
+        public void deleteUser (User user){
+            userList.remove(user);
 
-    public User[] getUserArray()
-    {
-        return null;
+        }
+
+        public boolean exists (User user)
+        {
+
+            return userList.contains(user);
+        }
+
+        public boolean usernameExists (String username)
+        {
+
+
+            return username.contains(username);
+        }
+
+        public User getUserByUsername (String userName){
+
+            for (int j = 0; j < userList.size(); j++) {
+
+                if (userList.get(j).getUserName() == userName) {
+
+                    return userList.get(j);
+                }
+
+            }
+            return null;
+        }
+
+        public int count ()
+        {
+
+
+            return userList.size();
+        }
+
+
+        public User[] getUserArray ()
+        {
+
+            return userList.toArray(new User[0]);
+        }
     }
-}
